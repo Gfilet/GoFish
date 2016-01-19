@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Title</title>
+	<title>Dynamic Developers</title>
 	<meta name="description" content="The HTML5 Herald">
 	<meta name="author" content="SitePoint">
 	<link rel="stylesheet" href="style.css?v=3.0">
@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="web.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="linker.js"></script>
 </head>
 <body>
 
@@ -34,8 +35,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       	<li class="active"><a href="">Home <i class="fa fa-home"></i></a></li>
-      	<li><a href="">About <i class="fa fa-question-circle"></i></a></li>
-      	<li><a href="">Contact <i class="fa fa-envelope"></i></i></a></li>
+      	<li><a href="About.html">About <i class="fa fa-question-circle"></i></a></li>
+      	<li><a href="Contact.html">Contact <i class="fa fa-envelope"></i></i></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Projects <i class="fa fa-suitcase"></i></a></li>
@@ -53,7 +54,7 @@
 				<h1>Dynamic Developers</h1>
 				<h3>Inspirational Quote</h3>
 				<hr>
-				<button class="btn btn-default btn-lg"></i> Welcome </button>
+				<button id="Welcome" class="btn btn-default btn-lg" onclick="load()"></i> Welcome </button>
 			</div>
 		</div>
 	</div>
