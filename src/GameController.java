@@ -10,7 +10,6 @@ public class GameController
 	private Deck Deck = new Deck();
 	private boolean playing;
 	private static Frame frame;
-	
 	public static void main(String []args)
 	{
 		frame = new Frame();
@@ -30,17 +29,16 @@ public class GameController
 			player1.add(a1.remove());
 			player2.add(a1.remove());
 		}
-		System.out.println("Player 1:");
 		player1.pair();
-		System.out.println("Player 2:");
 		player2.pair();
-		System.out.println();
 		int turn = 0;
 		
 		boolean playing = true;
 		// Gets the score for both players and prints their values
 		while((player1.numberOfEntries > 0) && (player2.numberOfEntries > 0)){
-			
+			 
+			frame.updatePScore(player1.getScore());
+			frame.updateBScore(player2.getScore());
 			System.out.println("player1 Score: " + player1.getScore());
 			System.out.println("player2 Score: " + player2.getScore());
 			System.out.println();
@@ -49,14 +47,14 @@ public class GameController
 			Player player, opponent;
 			if(turn % 2 == 0)
 			{
-				
+				frame.notifyBoard("Player1 turn!!");
 				System.out.println("Player1 turn!!");
 				player = player1;
 				opponent = player2;
 			}
 			else
 			{
-				System.out.println("Player2 turn!!");
+				frame.notifyBoard("Player2 turn!!");
 				player = player2;
 				opponent = player1;
 			}
@@ -73,7 +71,7 @@ public class GameController
 			}
 			else
 			{
-				System.out.println("GoFish!!!");
+				frame.notifyBoard("GoFish!!!");
 				player.add(a1.remove());
 				turn++;
 			}
@@ -87,12 +85,21 @@ public class GameController
 			{
 			System.out.println();
 			System.out.println();
-			System.out.println("You win! Your score: " +player1.getScore() + "." + " Player 2 Score: " + player2.getScore() + ".");
+			frame.notifyBoard("You win! Your score: " +player1.getScore() + "." + " Player 2 Score: " + player2.getScore() + ".");
 			}
-		
+		 
 		else if(player1.getScore() < player2.getScore())
-			System.out.println("You lose! Your score: " +player1.getScore() + "." + " Player 2 Score: " + player2.getScore() + ".");
+			frame.notifyBoard("You lose! Your score: " +player1.getScore() + "." + " Player 2 Score: " + player2.getScore() + ".");
 		else if(player1.getScore() == player2.getScore())
-			System.out.println("You tied! Your score and Player 2 score: " + player1.getScore());
+			frame.notifyBoard("You tied! Your score and Player 2 score: " + player1.getScore());
 	    }
+	public static void notifyUI(String string) {
+		frame.notifyBoard(string);
+	}
+	public static String request() {
+		return frame.checkFish();
+	}
+	public static void clear() {
+		frame.clear();		
+	}
 }

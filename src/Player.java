@@ -201,7 +201,7 @@ public class Player
 						removeEntry(k);
 						removeEntry(b);
 						b--;
-							System.out.println("Found a pair!");
+						GameController.notifyUI("Found a pair!");
 						myScore++;
 						break;
 					}
@@ -220,19 +220,26 @@ public class Player
 		Scanner s = new Scanner(System.in);
 		
 		Card[] copyOfBag = this.toArray();
-		System.out.println("Player's Card " + Arrays.toString(copyOfBag));
-		System.out.println("Ask apponent for [A,2,3,4,5,6,7,8,9,10,J,Q,K]: ");
-		
+		GameController.notifyUI("Player's Card " + Arrays.toString(copyOfBag));
+		GameController.notifyUI("Ask apponent for [A,2,3,4,5,6,7,8,9,10,J,Q,K]: ");
+		String askCard = GameController.request();
 		while(true)
 		{
-			String askCard = s.next();
+			askCard = GameController.request();
 			if(containsValue(askCard))
 			{
 				return askCard;
 			}
 			else
 			{
-				System.out.println("You don't have that card! ask again:");
+				GameController.notifyUI("You don't have that card! ask again:");
+				GameController.clear();
+				GameController.notifyUI("Player's Card " + Arrays.toString(copyOfBag));
+				try {
+					Thread.sleep(5000);
+				} catch(InterruptedException ex) {
+					Thread.currentThread().interrupt();
+				}
 			}
 		}	
 	}

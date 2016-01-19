@@ -2,6 +2,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -20,6 +24,8 @@ public class Frame {
 	private JTextArea introText;
 	private JButton jb;
 	private JPanel jp;
+	private GameUI GUI;
+	
 	public void startGame() {
 		
 		setWindow();
@@ -27,6 +33,52 @@ public class Frame {
 	}
 	
 	private void addUICompnts() {
+		frame.addWindowListener(new WindowListener() {
+
+			@Override
+			public void windowActivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				System.exit(0);
+				frame.dispose();
+			}
+
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				System.exit(0);
+				frame.dispose();
+				
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowIconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		jp = new JPanel();
 		jtext = new JTextArea(400,300);
 		scrollPane = new JScrollPane(jtext);
@@ -47,23 +99,173 @@ public class Frame {
 		//jp.setLayout(new GridLayout(2,1,0,0));
 		jp.setAlignmentX(50);
 		jp.setBackground(new Color(211,211,211));
-		TitledBorder border = new TitledBorder("Introduction");
+		final TitledBorder border = new TitledBorder("Introduction");
 		border.setBorder((BorderFactory.createLineBorder(Color.RED)));
+		
+		jb.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.getContentPane().removeAll();
+				frame.getContentPane().repaint();
+				final Frame f2 = new Frame();
+				f2.startGame();
+				f2.frame.getContentPane().removeAll();
+				f2.frame.getContentPane().repaint();
+				JPanel jp2 = new JPanel();
+				jp2.setBorder(border);
+				jp2.add(introText);
+				JButton jb2 = new JButton("Close");
+				jb2.setBounds(20,30,50,30);
+				jb2.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						System.exit(0);
+						f2.frame.dispose();
+						frame.dispose();
+					}
+				});
+				jp2.add(jb2);
+				f2.frame.setBounds(650, 0, 650, 250);
+				f2.frame.getContentPane().add(jp2);
+				frame.addWindowListener(new WindowListener() {
+
+					@Override
+					public void windowActivated(WindowEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void windowClosed(WindowEvent arg0) {
+						System.exit(0);
+						f2.frame.dispose();
+						frame.dispose();
+					}
+
+					@Override
+					public void windowClosing(WindowEvent arg0) {
+						System.exit(0);
+						f2.frame.dispose();
+						frame.dispose();
+						
+					}
+
+					@Override
+					public void windowDeactivated(WindowEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void windowDeiconified(WindowEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void windowIconified(WindowEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void windowOpened(WindowEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+				});
+				f2.frame.addWindowListener(new WindowListener() {
+
+					@Override
+					public void windowActivated(WindowEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void windowClosed(WindowEvent arg0) {
+						System.exit(0);
+						f2.frame.dispose();
+						frame.dispose();
+					}
+
+					@Override
+					public void windowClosing(WindowEvent arg0) {
+						System.exit(0);
+						f2.frame.dispose();
+						frame.dispose();
+						
+					}
+
+					@Override
+					public void windowDeactivated(WindowEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void windowDeiconified(WindowEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void windowIconified(WindowEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void windowOpened(WindowEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+				});
+				GUI.playGame(frame);
+			}
+		});
 		jp.setBorder(border);
 		jp.add(introText);
 		jp.add(jb);
+		jp.setVisible(false);
 		frame.add(jp);
 		frame.setVisible(true);
 	}
 
 	private void setWindow() {
-		frame = new JFrame("Go Fish");
-		frame.setSize(new Dimension(650,300));
-	    frame.setVisible(false);
+
 	}
 
 	Frame() {
+		frame = new JFrame("Go Fish");
+		frame.setSize(new Dimension(650,300));
+	    frame.setVisible(false);
+		GUI = new GameUI();
+		GUI.setup(frame);
+	}
+
+	public void notifyBoard(String string) {
+		if(GUI != null) {
+			GUI.notifyMessages(string);
+		}
 		
+	}
+
+	public void updatePScore(int score) {
+		GUI.notifyPLabel(score);
+	}
+
+	public void updateBScore(int score) {
+		GUI.notifyBLabel(score);
+	}
+
+	public String checkFish() {
+		return GUI.hasRequest();
+	}
+
+	public void clear() {
+		GUI.clear();		
 	}
 	
 }
