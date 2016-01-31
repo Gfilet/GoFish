@@ -1,7 +1,6 @@
-
-<!doctype html>
-<html lang="en">
+<html>
 <head>
+	<title>BlogPage</title>
 	<meta charset="utf-8">
 	<title>Dynamic Developers</title>
 	<title>Title</title>
@@ -16,8 +15,11 @@
 	<link rel="stylesheet" type="text/css" href="web.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<script src="linker.js"></script>
+	<title>Welcome Page</title>
+	<script type="text/javascript"></script>
 </head>
 <body>
+	<!-- Top page nav bar -->
 <div id="main-wrapper">
 	<nav class="navbar navbar-default">
   <div class="container">
@@ -35,7 +37,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-      	<li class="web.html"><a href="">Home <i class="fa fa-home"></i></a></li>
+      	<li class="active"><a href="">Home <i class="fa fa-home"></i></a></li>
       	<li><a href="About.html">About <i class="fa fa-question-circle"></i></a></li>
       	<li><a href="Contact.html">Contact <i class="fa fa-envelope"></i></i></a></li>
       </ul>
@@ -45,50 +47,27 @@
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+</div>
 
-  
-</nav>
-<div class="form">
-		<h1 id="Caption">Developers Needed?</h1>
-			<form id="info">
-				<label for="first">First Name: </label>
-				<input name="first" id="fname" type="text" placeholder="First" required>
-				<label for="last">Last Name: </label>
-				<input name="last" id="lname" type="text" placeholder="Last" required><br>
-				<label>Email: <input name="email" type="email" placeholder="Your Email" required></label><br>
-				<!-- <label for="name">Name:</label>
-				<input type="form" name="name" id="name"><br>
-				<label for="email">Email:</label>
-				<input type="form" name="email" id="email"><br> -->
-				<label>Service Request:</label>
-				<select>
-					<option value="website">Website</option>
-					<option value="app">Mobile App</option>
-					<option value="software">Software</option>
-					<option value="consulting">Consulting</option>
-				</select>
-				<h4>Description:</h4>
-				<textarea rows="7" id="description"></textarea>
-				<!-- changed type to submit so it checks for valid email format -->
-				<input type="submit" name="submit" value="Submit" id="submitButton"></input>
-			</form>
-		<!--
-		<div class="col-lg-12">
-			<div id="content">
-				<h1>Dynamic Developers</h1>
-				<h3>Inspirational Quote</h3>
-				<hr>
-				<button id="Welcome" class="btn btn-default btn-lg" onclick="load()"></i> Welcome </button>
-			</div>
-		</div>
-	-->
+	<div class="post">
+
+		<div class="date">January 31, 2016</div>
+
+	<h2>First Article!</h2>
+
+	<p class="quote">This is the first blog post on our page! Starting this new adventure is tons of fun! Can't wait for the finished product!
+		-Mark</p>
+
 	</div>
-	<div class="push"></div>
+
+
+<!-- Footer -->
+		<div class="push"></div>
 	</div>
 	<div id="copyright">
 		<ul id="footerLinks">
 			<li id="first"><a href="#"><i class="fa fa-suitcase"></i> Opportunities</a></li>
-			<li><a href="blogPage.html"><i class="fa fa-rss-square"></i> Blog</a></li>
+			<li><a href="#"><i class="fa fa-rss-square"></i> Blog</a></li>
 			<li><a href="https://www.facebook.com"><i class="fa fa-facebook-square"></i> Facebook</a></li>
 			<li id="last"><a href="https://www.twitter.com"><i class="fa fa-twitter-square"></i> Twitter</a></li>
 		</ul>
@@ -97,37 +76,5 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script text="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
- <!--	<script src="js/scripts.js"></script>
-	<h1 id="header">Dynamic Developers</h1>
-	<table id="menu">
-		<tbody>
-			<th id="nav"></th>
-			<td><a href="#about">About Us</td>
-			<td>Our Skills</td>
-			<td>Our Work</td>
-			<td>Our Profiles</td>
-		</tbody>
-	</table>
-	<h2 id="quote">"Inspirational Quote Here"</h2>
-	<h1 id="aboutHeader"></h1>
-	<h3 id="about">We write code</h3>
-	<table id="aboutTable">
-		<tbody>
-			<tr><th id="personalTable">Grant</td></tr>
-			<tr><td><a href="Gresume.html">Resume</a></td>
-			<td><a href="Gprojects.html">Projects</a></td></tr>
-			<tr><td>Interests</td>
-			<td>Contact Info</td></tr>
-		</tbody>
-	</table>
-	<table id="aboutTable2">
-		<tbody>
-			<tr><th id="personalTable">Mark</td></tr>
-			<tr><td>Resume</td>
-			<td>Projects</td></tr>
-			<tr><td>Interests</td>
-			<td>Contact Info</td></tr>
-		</tbody>
-	</table> -->
 </body>
 </html>
